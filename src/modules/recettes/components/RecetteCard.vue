@@ -10,13 +10,7 @@ defineProps<{
   <v-card class="mb-3">
     <v-card-title>{{ recette.titre }}</v-card-title>
     <v-card-text>
-      <v-chip
-        v-for="t in recette.tags"
-        :key="t"
-        class="mr-1"
-        color="secondary"
-        variant="tonal"
-      >
+      <v-chip v-for="t in recette.tags" :key="t" class="mr-1" color="secondary" variant="tonal">
         {{ t }}
       </v-chip>
     </v-card-text>

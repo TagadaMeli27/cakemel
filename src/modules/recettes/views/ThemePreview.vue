@@ -15,13 +15,7 @@
 
     <h2 class="text-h6 mb-2">Les 5 couleurs de tags</h2>
     <div class="mb-4">
-      <v-chip
-        v-for="n in 5"
-        :key="n"
-        :color="`tag${n}`"
-        :variant="'tonal'"
-        class="mr-1 mb-1"
-      >
+      <v-chip v-for="n in 5" :key="n" :color="`tag${n}`" :variant="'tonal'" class="mr-1 mb-1">
         tag{{ n }}
       </v-chip>
     </div>

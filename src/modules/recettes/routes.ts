@@ -6,10 +6,10 @@ export const recettesRoutes: RouteRecordRaw[] = [
     name: 'recettes-liste',
     component: () => import('./views/ListView.vue'),
   },
-  { 
-    path: '/theme', 
-    name: 'theme-preview', 
-    component: () => import('./views/ThemePreview.vue') 
+  {
+    path: '/theme',
+    name: 'theme-preview',
+    component: () => import('./views/ThemePreview.vue'),
   },
   // {
   //     path: '/recettes/nouvelle',

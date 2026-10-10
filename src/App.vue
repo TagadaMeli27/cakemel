@@ -17,7 +17,12 @@ type Entree = {
 }
 
 const items: Entree[] = [
-  { titre: 'Recettes', icone: 'mdi-book-open-variant', to: { name: 'recettes-liste' }, exact: true },
+  {
+    titre: 'Recettes',
+    icone: 'mdi-book-open-variant',
+    to: { name: 'recettes-liste' },
+    exact: true,
+  },
   // À activer quand la vue existera : ajouter `to: { name: 'recette-creation' }` et retirer `disabled`
   { titre: 'Ajouter', icone: 'mdi-plus-circle-outline', disabled: true },
   // TEMPORAIRE : accès à la page de test des couleurs

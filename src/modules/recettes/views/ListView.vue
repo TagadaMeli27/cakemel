@@ -16,9 +16,7 @@ function ajouterTest() {
   <v-container>
     <h1 class="text-h5 mb-4">Mes recettes</h1>
 
-    <p v-if="recettes.length === 0" class="text-medium-emphasis">
-      Aucune recette pour l'instant.
-    </p>
+    <p v-if="recettes.length === 0" class="text-medium-emphasis">Aucune recette pour l'instant.</p>
 
     <RecetteCard v-for="r in recettes" :key="r.id" :recette="r" />
 
