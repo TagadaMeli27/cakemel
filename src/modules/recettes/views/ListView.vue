@@ -21,7 +21,7 @@ const { mobile } = useDisplay()
 
   <v-fab
     icon="mdi-plus"
-    color="success"
+    color="primary"
     location="bottom end"
     app
     appear

@@ -36,13 +36,13 @@ async function supprimer() {
 
 <template>
   <v-container>
-    <v-progress-linear v-if="recette === undefined" indeterminate color="primary" />
+    <v-progress-linear v-if="recette === undefined" indeterminate color="secondary" />
 
     <v-alert v-else-if="recette === null" type="warning" text="Recette introuvable" />
 
     <template v-else>
       <div class="d-flex align-start ga-2">
-        <h1 class="text-h5 flex-grow-1">{{ recette.titre }}</h1>
+        <h1 class="text-h5 flex-grow-1 text-secondary">{{ recette.titre }}</h1>
         <v-btn
           :icon="recette.favori ? 'mdi-heart' : 'mdi-heart-outline'"
           :color="recette.favori ? 'favori' : undefined"
@@ -53,13 +53,13 @@ async function supprimer() {
       </div>
 
       <div class="d-flex flex-wrap ga-2 mt-2">
-        <v-chip v-if="recette.portions" prepend-icon="mdi-silverware-fork-knife" variant="tonal">
+        <v-chip v-if="recette.portions" prepend-icon="mdi-silverware-fork-knife" variant="tonal" color="secondary">
           {{ recette.portions }} portions
         </v-chip>
-        <v-chip v-if="recette.tempsPrep" prepend-icon="mdi-timer-outline" variant="tonal">
+        <v-chip v-if="recette.tempsPrep" prepend-icon="mdi-timer-outline" variant="tonal" color="secondary">
           Prépa {{ recette.tempsPrep }} min
         </v-chip>
-        <v-chip v-if="recette.tempsCuisson" prepend-icon="mdi-pot-steam-outline" variant="tonal">
+        <v-chip v-if="recette.tempsCuisson" prepend-icon="mdi-pot-steam-outline" variant="tonal" color="secondary">
           Cuisson {{ recette.tempsCuisson }} min
         </v-chip>
       </div>
@@ -72,7 +72,7 @@ async function supprimer() {
 
       <p v-if="recette.description" class="mt-4 text-pre-line">{{ recette.description }}</p>
 
-      <h2 class="text-h6 mt-6 mb-2">Ingrédients</h2>
+      <h2 class="text-h6 mt-6 mb-2 text-secondary">Ingrédients</h2>
       <v-card v-if="recette.ingredients.length">
         <v-list>
           <v-list-item v-for="(ing, i) in recette.ingredients" :key="i" :title="ligne(ing)" />
@@ -80,12 +80,12 @@ async function supprimer() {
       </v-card>
       <p v-else class="text-medium-emphasis">Aucun ingrédient renseigné.</p>
 
-      <h2 class="text-h6 mt-6 mb-2">Préparation</h2>
+      <h2 class="text-h6 mt-6 mb-2 text-secondary">Préparation</h2>
       <div v-for="(etape, i) in recette.etapes" :key="i" class="d-flex ga-3 mb-3">
         <v-avatar color="primary" size="28" class="flex-shrink-0">
           <span class="text-body-2">{{ i + 1 }}</span>
         </v-avatar>
-        <p class="text-pre-line">{{ etape }}</p>
+        <p class="text-pre-line my-0">{{ etape }}</p>
       </div>
       <p v-if="!recette.etapes.length" class="text-medium-emphasis">Aucune étape renseignée.</p>
 
@@ -107,7 +107,6 @@ async function supprimer() {
         <v-spacer />
         <v-btn
           color="error"
-          variant="text"
           prepend-icon="mdi-delete-outline"
           @click="dialogSuppression = true"
         >
@@ -130,3 +129,10 @@ async function supprimer() {
     </template>
   </v-container>
 </template>
+
+<style>
+h1 {
+  display: inline-block;
+  background-image: linear-gradient(180deg, transparent 60%, rgba(var(--v-theme-primary), 0.5) 60%);
+}
+</style>

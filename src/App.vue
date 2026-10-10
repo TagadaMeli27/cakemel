@@ -31,6 +31,12 @@ type Entree = {
 
 const items: Entree[] = [
   {
+    titre: 'Favoris',
+    icone: 'mdi-heart',
+    to: { name: 'recettes-favoris' },
+    exact: true,
+  },
+  {
     titre: 'Recettes',
     icone: 'mdi-book-open-variant',
     to: { name: 'recettes-liste' },
@@ -45,6 +51,7 @@ const items: Entree[] = [
   <v-app>
     <v-app-bar>
       <v-btn v-if="avecRetour" icon="mdi-arrow-left" aria-label="Retour" @click="retour" />
+      <img v-else src="/favicon.svg" alt="" width="32" height="32" class="ml-4" />
       <v-app-bar-title>{{ titre }}</v-app-bar-title>
     </v-app-bar>
 
@@ -68,7 +75,7 @@ const items: Entree[] = [
     </v-main>
 
     <!-- Téléphone : barre du bas, à portée de pouce -->
-    <v-bottom-navigation v-if="mobile" grow bg-color="primary" elevation="0">
+    <v-bottom-navigation v-if="mobile" grow color="primary" elevation="0">
       <v-btn
         v-for="item in items"
         :key="item.titre"

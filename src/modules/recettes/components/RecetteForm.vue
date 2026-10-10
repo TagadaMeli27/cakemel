@@ -106,7 +106,7 @@ async function onSubmit() {
 
     <v-combobox v-model="form.tags" label="Tags" multiple chips closable-chips />
 
-    <h2 class="text-h6 mt-4 mb-2">Ingrédients</h2>
+    <h2 class="text-h6 mt-4 mb-2 text-secondary">Ingrédients</h2>
     <v-row v-for="(ing, i) in form.ingredients" :key="i" dense>
       <v-col cols="4" sm="2">
         <v-text-field
@@ -132,7 +132,7 @@ async function onSubmit() {
       Ajouter un ingrédient
     </v-btn>
 
-    <h2 class="text-h6 mt-6 mb-2">Étapes</h2>
+    <h2 class="text-h6 mt-6 mb-2 text-secondary">Étapes</h2>
     <v-textarea
       v-for="(etape, i) in form.etapes"
       :key="i"
@@ -148,7 +148,7 @@ async function onSubmit() {
     </v-textarea>
     <v-btn prepend-icon="mdi-plus" variant="tonal" @click="addEtape">Ajouter une étape</v-btn>
 
-    <h2 class="text-h6 mt-6 mb-2">Plus</h2>
+    <h2 class="text-h6 mt-6 mb-2 text-secondary">Plus</h2>
     <v-text-field v-model="form.source" label="Source (livre, site, personne...)" />
     <v-textarea v-model="form.notes" label="Notes" rows="2" auto-grow />
 

@@ -8,6 +8,12 @@ export const recettesRoutes: RouteRecordRaw[] = [
     meta: { titre: 'Mes recettes' },
   },
   {
+    path: '/favoris',
+    name: 'recettes-favoris',
+    component: () => import('./views/FavorisListView.vue'),
+    meta: { titre: 'Mes favoris' },
+  },
+  {
     path: '/theme',
     name: 'theme-preview',
     component: () => import('./views/ThemePreview.vue'),
