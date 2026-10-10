@@ -36,7 +36,6 @@ const items: Entree[] = [
     to: { name: 'recettes-liste' },
     exact: true,
   },
-  { titre: 'Ajouter', icone: 'mdi-plus-circle-outline', to: { name: 'recette-creation' } },
   // TEMPORAIRE : accès à la page de test des couleurs
   { titre: 'Thème', icone: 'mdi-palette-outline', to: '/theme' },
 ]

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useRecettes } from '../composables/useRecettes'
 import RecetteCard from '../components/RecetteCard.vue'
+import { useDisplay } from 'vuetify'
 
 const { recettes } = useRecettes()
+const { mobile } = useDisplay()
 </script>
 
 <!-- <RouterLink :to="{ name: 'recette-detail', params: { id: r.id } }"> pour naviguer à différents endroits -->
@@ -16,4 +18,15 @@ const { recettes } = useRecettes()
       </v-col>
     </v-row>
   </v-container>
+
+  <v-fab
+    icon="mdi-plus"
+    color="success"
+    location="bottom end"
+    app
+    appear
+    :style="mobile ? { bottom: '56px' } : undefined"
+    :to="{ name: 'recette-creation' }"
+    aria-label="Ajouter une recette"
+  />
 </template>
