@@ -11,11 +11,11 @@ export const recettesRoutes: RouteRecordRaw[] = [
     name: 'theme-preview',
     component: () => import('./views/ThemePreview.vue'),
   },
-  // {
-  //     path: '/recettes/nouvelle',
-  //     name: 'recette-creation',
-  //     component: () => import('./views/EditView.vue')
-  // },
+  {
+      path: '/recettes/creer',
+      name: 'recette-creation',
+      component: () => import('./views/EditView.vue')
+  },
   // {
   //     path: '/recettes/:id',
   //     name: 'recette-detail',
