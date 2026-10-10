@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Saladier et cuillère</title>
+  <rect width="512" height="512" rx="64" fill="#A35F12"/>
+  <!-- saladier : contour + pâte -->
+  <g fill="none" stroke="#FFFAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M104 290 H408"/>
+    <path d="M104 290 A152 152 0 0 0 408 290"/>
+  </g>
+  <path d="M131 376 Q194 350 256 376 T381 376 A152 152 0 0 1 131 376 Z" fill="#FFFAF2"/>
+  <circle cx="196" cy="404" r="8" fill="#A35F12"/>
+  <circle cx="300" cy="410" r="8" fill="#A35F12"/>
+  <!-- éclaboussures -->
+  <g fill="#FFFAF2">
+    <circle cx="136" cy="232" r="11"/>
+    <circle cx="184" cy="200" r="8"/>
+    <circle cx="170" cy="256" r="7"/>
+  </g>
+  <!-- cuillère en bois : contour de la couleur du fond pour la détacher du bol -->
+  <g transform="translate(290 372) rotate(24)">
+    <g fill="#A35F12" stroke="#A35F12" stroke-width="26" stroke-linejoin="round">
+      <ellipse cx="0" cy="-52" rx="38" ry="54"/>
+      <rect x="-12" y="-306" width="24" height="262" rx="12"/>
+    </g>
+    <g fill="#FFFAF2">
+      <ellipse cx="0" cy="-52" rx="38" ry="54"/>
+      <rect x="-12" y="-306" width="24" height="262" rx="12"/>
+    </g>
+  </g>
+</svg>
