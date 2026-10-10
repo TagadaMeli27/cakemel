@@ -19,20 +19,24 @@ onMounted(async () => {
 })
 
 async function save(data: NouvelleRecette) {
-  if (props.id) await recetteRepository.update(props.id, data)
-  else await recetteRepository.create(data)
+  if (props.id) {
+    await recetteRepository.update(props.id, data)
+    router.push({ name: 'recette-detail', params: { id: props.id } })
+  } else {
+    const creee = await recetteRepository.create(data)
+    router.push({ name: 'recette-detail', params: { id: creee.id } })
+  }
   router.push({ name: 'recettes-liste' })
 }
 
 function annuler() {
-  router.push({ name: 'recettes-liste' })
+  if (props.id) router.push({ name: 'recette-detail', params: { id: props.id } })
+  else router.push({ name: 'recettes-liste' })
 }
 </script>
 
 <template>
   <v-container>
-    <h1 class="text-h5 mb-4">{{ id ? 'Modifier la recette' : 'Nouvelle recette' }}</h1>
-
     <v-alert v-if="introuvable" type="warning" text="Recette introuvable" />
 
     <!-- v-if : le formulaire copie `initial` une seule fois, il doit donc attendre le chargement -->

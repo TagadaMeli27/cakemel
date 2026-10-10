@@ -29,5 +29,10 @@ export default createVuetify({
   },
   defaults: {
     VAlert: { variant: 'flat', border: 'start', density: 'comfortable' },
+    VAppBar: { color: 'primary', flat: true },
+    VCard: { elevation: 1 },
+    VTextField: { density: 'comfortable' },
+    VTextarea: { density: 'comfortable' },
+    VCombobox: { density: 'comfortable' },
   },
 })

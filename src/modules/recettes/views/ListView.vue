@@ -8,10 +8,12 @@ const { recettes } = useRecettes()
 <!-- <RouterLink :to="{ name: 'recette-detail', params: { id: r.id } }"> pour naviguer à différents endroits -->
 <template>
   <v-container>
-    <h1 class="text-h5 mb-4">Mes recettes</h1>
-
     <p v-if="recettes.length === 0" class="text-medium-emphasis">Aucune recette pour l'instant.</p>
 
-    <RecetteCard v-for="r in recettes" :key="r.id" :recette="r" />
+    <v-row>
+      <v-col v-for="r in recettes" :key="r.id" cols="12" sm="6">
+        <RecetteCard :recette="r" class="h-100" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
