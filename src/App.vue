@@ -1,85 +1,65 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import type { RouteLocationRaw } from 'vue-router'
+import { useDisplay } from 'vuetify'
+
+const APP_NAME = 'Cakemel'
+
+// true sur téléphone (et petite tablette), false sur grand écran
+const { mobile } = useDisplay()
+
+type Entree = {
+  titre: string
+  icone: string
+  to?: RouteLocationRaw // absent = pas de lien
+  exact?: boolean
+  disabled?: boolean
+}
+
+const items: Entree[] = [
+  { titre: 'Recettes', icone: 'mdi-book-open-variant', to: { name: 'recettes-liste' }, exact: true },
+  // À activer quand la vue existera : ajouter `to: { name: 'recette-creation' }` et retirer `disabled`
+  { titre: 'Ajouter', icone: 'mdi-plus-circle-outline', disabled: true },
+  // TEMPORAIRE : accès à la page de test des couleurs
+  { titre: 'Thème', icone: 'mdi-palette-outline', to: '/theme' },
+]
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <v-app>
+    <v-app-bar :title="APP_NAME" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <!-- Grand écran : menu latéral réduit, qui se déploie au survol -->
+    <v-navigation-drawer v-if="!mobile" permanent rail expand-on-hover>
+      <v-list nav>
+        <v-list-item
+          v-for="item in items"
+          :key="item.titre"
+          :to="item.to"
+          :exact="item.exact"
+          :disabled="item.disabled"
+          :prepend-icon="item.icone"
+          :title="item.titre"
+        />
+      </v-list>
+    </v-navigation-drawer>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+    <v-main>
+      <RouterView />
+    </v-main>
 
-  <RouterView />
+    <!-- Téléphone : barre du bas, à portée de pouce -->
+    <v-bottom-navigation v-if="mobile" grow color="primary">
+      <v-btn
+        v-for="item in items"
+        :key="item.titre"
+        :to="item.to"
+        :exact="item.exact"
+        :disabled="item.disabled"
+      >
+        <v-icon>{{ item.icone }}</v-icon>
+        {{ item.titre }}
+      </v-btn>
+    </v-bottom-navigation>
+  </v-app>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
