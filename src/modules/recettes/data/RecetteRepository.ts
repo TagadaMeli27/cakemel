@@ -51,6 +51,10 @@ export class RecetteRepository {
     return this.database.recettes.orderBy('titre').toArray()
   }
 
+  findFavoris(): Promise<Recette[]> {
+    return this.database.recettes.filter((recette) => recette.favori).toArray()
+  }
+
   findByTag(tag: string): Promise<Recette[]> {
     return this.database.recettes.where('tags').equals(tag).toArray()
   }

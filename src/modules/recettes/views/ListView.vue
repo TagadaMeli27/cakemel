@@ -1,27 +1,32 @@
 <script setup lang="ts">
 import { useRecettes } from '../composables/useRecettes'
-import { recetteRepository } from '../data/RecetteRepository'
 import RecetteCard from '../components/RecetteCard.vue'
+import { useDisplay } from 'vuetify'
 
 const { recettes } = useRecettes()
-
-// TEMPORAIRE : pour avoir des données à afficher, à supprimer ensuite
-function ajouterTest() {
-  recetteRepository.create({ titre: 'Recette test', tags: ['test'] })
-}
+const { mobile } = useDisplay()
 </script>
 
 <!-- <RouterLink :to="{ name: 'recette-detail', params: { id: r.id } }"> pour naviguer à différents endroits -->
 <template>
   <v-container>
-    <h1 class="text-h5 mb-4">Mes recettes</h1>
-
     <p v-if="recettes.length === 0" class="text-medium-emphasis">Aucune recette pour l'instant.</p>
 
-    <RecetteCard v-for="r in recettes" :key="r.id" :recette="r" />
-
-    <v-btn color="primary" prepend-icon="mdi-plus" @click="ajouterTest">
-      Ajouter une recette de test
-    </v-btn>
+    <v-row>
+      <v-col v-for="r in recettes" :key="r.id" cols="12" sm="6">
+        <RecetteCard :recette="r" class="h-100" />
+      </v-col>
+    </v-row>
   </v-container>
+
+  <v-fab
+    icon="mdi-plus"
+    color="primary"
+    location="bottom end"
+    app
+    appear
+    :style="mobile ? { bottom: '56px' } : undefined"
+    :to="{ name: 'recette-creation' }"
+    aria-label="Ajouter une recette"
+  />
 </template>
